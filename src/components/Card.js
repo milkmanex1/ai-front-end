@@ -2,9 +2,12 @@ import React from "react";
 import { download } from "../assets"; //this is a download.png picture
 import { downloadImage } from "../utils"; //this is a function to download a picture
 
-const Card = ({ _id, name, prompt, photo }) => {
+const Card = ({ _id, name, prompt, photo, handleOpen }) => {
   return (
-    <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card cursor-pointer">
+    <div
+      onClick={handleOpen}
+      className="rounded-xl group relative shadow-card hover:shadow-cardhover card cursor-pointer"
+    >
       <img
         src={photo}
         alt={prompt}
