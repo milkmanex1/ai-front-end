@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Loader, Card, FormField } from "../components";
+import { Loader, Card, FormField, ImageModal } from "../components";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -39,7 +39,8 @@ const Home = () => {
 
   const RenderCards = ({ data, title }) => {
     if (data?.length > 0) {
-      return data.map((post, i) => <Card key={i} {...post}></Card>);
+      //   return data.map((post, i) => <Card key={i} {...post}></Card>);
+      return data.map((post, i) => <ImageModal key={i} {...post}></ImageModal>);
     } else {
       return (
         <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">

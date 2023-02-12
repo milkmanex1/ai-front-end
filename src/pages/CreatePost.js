@@ -78,6 +78,14 @@ const CreatePost = () => {
   //Share function seems to be working, because reponse status is 200
   async function handleShare(e) {
     e.preventDefault();
+    if (!form.name) {
+      alert("Please enter your name!");
+      return;
+    }
+    if (!form.photo) {
+      alert("No photo to share!");
+      return;
+    }
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
@@ -113,14 +121,14 @@ const CreatePost = () => {
         <h1 className="font-extrabold text-black text-2xl">Create</h1>
         <p className="mt-2 text-slate-500 text-md max-w-[800px]">
           Our AI engine can create original, realistic images and art from a
-          text description. It can combine concepts, attributes, and styles.
+          text description.
         </p>
         <p className="mt-2 text-slate-500 text-md max-w-[800px]">
           Don't believe us? Enter something in the Prompt below and hit
-          'Generate'!
+          'Generate'! Don't be afraid to be detailed!
         </p>
       </div>
-      <form className="mt-16 max-w-3xl">
+      <form className="mt-12 max-w-3xl">
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your name"
