@@ -5,7 +5,26 @@ import { preview } from "../assets";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
 
+import { Configuration, OpenAIApi } from "openai";
+
 const CreatePost = () => {
+  //set up config to call openai Api
+  //   const config = new Configuration({
+  //     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  //   });
+  //   const openai = new OpenAIApi(config);
+  //   console.log(process.env);
+  //   console.log(process.env.REACT_APP_OPENAI_API_KEY);
+
+  //   async function generateImage(e) {
+  //     e.preventDefault();
+  //     const res = await openai.createImage({
+  //       prompt: "Say this is a test",
+  //       n: 1,
+  //       size: "1024x1024",
+  //     });
+  //     console.log(res.data.data[0].url);
+  //   }
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -40,13 +59,12 @@ const CreatePost = () => {
         if (!response.ok) {
           console.log(response);
           if (response.status === 500) {
-            alert(
-              "Your prompt may contain violent or adult language. Please remove them and try again. Otherwise, it may be a server issue."
-            );
+            alert("Server error");
           }
+        } else {
+          const data = await response.json();
+          setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
         }
-        const data = await response.json();
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
         console.log(err);
       } finally {
