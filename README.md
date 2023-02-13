@@ -1,7 +1,7 @@
 Demo here: https://ai-udz1.onrender.com/
 
 ## Amazing Image
-Harness the Power of Artificial Intelligence to render beautiful images, and share them with the community.
+Harness the power of Artificial Intelligence to render beautiful images, and share them with the community.
 
 Amazing Image is a full-stack MERN app built from scratch with the following technologies:
 
