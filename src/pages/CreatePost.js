@@ -59,7 +59,9 @@ const CreatePost = () => {
         if (!response.ok) {
           console.log(response);
           if (response.status === 500) {
-            alert("Server error");
+            alert(
+              "Server error. Please wait awhile and try again. Error is due to hosting server loading slowly"
+            );
           }
         } else {
           const data = await response.json();
