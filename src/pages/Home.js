@@ -26,6 +26,9 @@ const Home = () => {
       } catch (err) {
         console.log("got error");
         alert(err);
+        alert(
+          "please wait a few minutes and then reload the page. This error is due to the hosting server loading slowly."
+        );
       } finally {
         setLoading(false);
       }
