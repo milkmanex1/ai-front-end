@@ -49,13 +49,16 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch("http://localhost:3020/api/v1/dalle", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: form.prompt }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API}/api/v1/dalle`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt: form.prompt }),
+          }
+        );
         if (!response.ok) {
           console.log(response);
           if (response.status === 500) {
@@ -92,11 +95,14 @@ const CreatePost = () => {
       setLoading(true);
       try {
         //call our Post image route
-        const response = await fetch("http://localhost:3020/api/v1/post", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...form }),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API}/api/v1/post`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...form }),
+          }
+        );
         if (response.status === 201) {
           console.log(response.status);
           console.log("shared successfully");

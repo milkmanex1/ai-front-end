@@ -7,15 +7,20 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
+
+  //   console.log(process.env.REACT_APP_API);
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
         //call our Get image route
-        const response = await fetch("http://localhost:3020/api/v1/post", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API}/api/v1/post`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
         if (response.ok) {
           console.log("get image successfully");
           const result = await response.json();
